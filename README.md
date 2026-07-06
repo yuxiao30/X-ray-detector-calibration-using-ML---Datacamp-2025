@@ -17,3 +17,4 @@ This project develops a machine learning pipeline for calibrating X-ray detector
 - Scikit-learn
 - Matplotlib
 This project was completed as part of the Datacamp 2025 challenge.
+The link to the project is https://www.codabench.org/competitions/12117/#/participate-tab
