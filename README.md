@@ -58,9 +58,7 @@ flowchart TD
 For each raw curve $x$, Gaussian smoothing with $\sigma = 3.5$ sampling
 positions reduces photon-count noise:
 
-$$
-\widetilde{x} = G_{\sigma} * x.
-$$
+$$ \widetilde{x} = G_{\sigma} * x. $$
 
 Because adjacent measurements are separated by 2 DAC, this corresponds to a
 smoothing scale of approximately 7 DAC.
@@ -71,24 +69,13 @@ Let $k_{\mathrm{peak}}$ be the position of the maximum smoothed count. For a
 relative level $\alpha$, the model finds the first position after the peak
 where the curve falls below $\alpha$ times its maximum:
 
-$$
-c_{\alpha}(x)
-=
-2\min\left\{
-k>k_{\mathrm{peak}}:
-\widetilde{x}_{k}
-<
-\alpha\max_j\widetilde{x}_{j}
-\right\}.
-$$
+$$ c_{\alpha}(x) = 2\min\left\{k>k_{\mathrm{peak}}:\widetilde{x}_{k}<\alpha\max_j\widetilde{x}_{j}\right\}. $$
 
 The factor 2 converts an array index into DAC units. Crossings are extracted at
 1%, 5%, 15%, 30%, and 50% of the peak. The 5% crossing is used as a robust
 initial estimate:
 
-$$
-b(x)=c_{0.05}(x).
-$$
+$$ b(x)=c_{0.05}(x). $$
 
 This crossing is not assumed to be the true inflection point. It acts as a
 curve-dependent anchor that moves with the signal when the beam energy changes.
@@ -118,20 +105,11 @@ energy-dependent changes in signal scale.
 Instead of directly learning the full target $y$, each regressor predicts the
 remaining error of the 5% crossing:
 
-$$
-r(x)=y-b(x).
-$$
+$$ r(x)=y-b(x). $$
 
 The final prediction is:
 
-$$
-\widehat{y}(x)
-=
-b(x)
-+
-\operatorname{median}_{m\in\{1,2,3\}}
-g_m\!\left(\phi(x)\right),
-$$
+$$ \widehat{y}(x) = b(x) + \operatorname{median}_{m\in\{1,2,3\}} g_m\!\left(\phi(x)\right). $$
 
 where $\phi(x)$ is the 19-dimensional feature vector and $g_1,g_2,g_3$ are
 three `HistGradientBoostingRegressor` models with different losses,
@@ -174,9 +152,7 @@ The following values come from the official Codabench scoring output:
 
 The RMSE is approximately:
 
-$$
-\frac{0.669237}{2}\approx0.335
-$$
+$$ \frac{0.669237}{2}\approx0.335 $$
 
 of the 2-DAC sampling interval. The submitted prediction file contained no
 missing or non-finite values.
