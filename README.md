@@ -69,7 +69,7 @@ Let $k_{\mathrm{peak}}$ be the position of the maximum smoothed count. For a
 relative level $\alpha$, the model finds the first position after the peak
 where the curve falls below $\alpha$ times its maximum:
 
-$$ c_{\alpha}(x) = 2\min\left\{k>k_{\mathrm{peak}}:\widetilde{x}_{k}<\alpha\max_j\widetilde{x}_{j}\right\}. $$
+$$ c_{\alpha}(x) = 2\min\{k > k_{\mathrm{peak}} : \widetilde{x}_k < \alpha\max_j\widetilde{x}_j\}. $$
 
 The factor 2 converts an array index into DAC units. Crossings are extracted at
 1%, 5%, 15%, 30%, and 50% of the peak. The 5% crossing is used as a robust
@@ -109,7 +109,7 @@ $$ r(x)=y-b(x). $$
 
 The final prediction is:
 
-$$ \widehat{y}(x) = b(x) + \operatorname{median}_{m\in\{1,2,3\}} g_m\!\left(\phi(x)\right). $$
+$$ \widehat{y}(x) = b(x) + \mathrm{median}_{m\in\{1,2,3\}} g_m(\phi(x)). $$
 
 where $\phi(x)$ is the 19-dimensional feature vector and $g_1,g_2,g_3$ are
 three `HistGradientBoostingRegressor` models with different losses,
